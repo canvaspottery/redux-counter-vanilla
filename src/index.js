@@ -1,4 +1,14 @@
 import { createStore } from "redux";
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+
+function increment() {
+  return { type: INCREMENT };
+}
+
+function decrement() {
+  return { type: DECREMENT };
+}
 
 function counter(state, action) {
   if (typeof state === "undefined") {
@@ -6,9 +16,9 @@ function counter(state, action) {
   }
 
   switch (action.type) {
-    case "INCREMENT":
+    case INCREMENT:
       return state + 1;
-    case "DECREMENT":
+    case DECREMENT:
       return state - 1;
     default:
       return state;
@@ -18,5 +28,5 @@ function counter(state, action) {
 const store = createStore(counter);
 
 document.getElementById("increment").addEventListener("click", function () {
-  store.dispatch({ type: "INCREMENT" });
+  store.dispatch(increment());
 });
