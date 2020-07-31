@@ -1,28 +1,15 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import React from "react";
+import { render } from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import App from "./components/App";
+import rootReducer from "./reducers";
 
-const counterSlice = createSlice({
-  name: "counter",
-  initialState: 0,
-  reducers: {
-    increment: (state) => state + 1,
-    decrement: (state) => state - 1,
-  },
-});
+const store = createStore(rootReducer);
 
-const store = configureStore({ reducer: counterSlice.reducer });
-const count = document.getElementById("count");
-count.innerHTML = store.getState();
-
-document.getElementById("increment").addEventListener("click", function () {
-  store.dispatch(counterSlice.actions.increment());
-});
-
-document.getElementById("decrement").addEventListener("click", function () {
-  store.dispatch(counterSlice.actions.decrement());
-});
-
-store.subscribe(updateView);
-
-function updateView() {
-  count.innerHTML = store.getState();
-}
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
