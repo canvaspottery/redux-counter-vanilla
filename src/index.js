@@ -6,10 +6,6 @@ function increment() {
   return { type: INCREMENT };
 }
 
-function decrement() {
-  return { type: DECREMENT };
-}
-
 function counter(state, action) {
   if (typeof state === "undefined") {
     return 0;
