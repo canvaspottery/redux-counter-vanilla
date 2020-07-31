@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, createAction } from "@reduxjs/toolkit";
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 
-function increment() {
-  return { type: INCREMENT };
-}
+const increment = createAction("INCREMENT");
 
 function counter(state, action) {
   if (typeof state === "undefined") {
