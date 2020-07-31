@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 
@@ -25,7 +25,7 @@ function counter(state, action) {
   }
 }
 
-const store = createStore(counter);
+const store = configureStore({ reducer: counter });
 
 document.getElementById("increment").addEventListener("click", function () {
   store.dispatch(increment());
